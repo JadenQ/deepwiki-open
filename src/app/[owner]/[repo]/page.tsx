@@ -26,6 +26,7 @@ interface WikiSection {
 interface WikiPage {
   id: string;
   title: string;
+  description: string;
   content: string;
   filePaths: string[];
   importance: 'high' | 'medium' | 'low';
@@ -1008,11 +1009,13 @@ QUALITY CHECKLIST before generating XML:
       pagesEls.forEach(pageEl => {
         const id = pageEl.getAttribute('id') || `page-${pages.length + 1}`;
         const titleEl = pageEl.querySelector('title');
+        const descriptionEl = pageEl.querySelector('description');
         const importanceEl = pageEl.querySelector('importance');
         const filePathEls = pageEl.querySelectorAll('file_path');
         const relatedEls = pageEl.querySelectorAll('related');
 
         const title = titleEl ? titleEl.textContent || '' : '';
+        const description = descriptionEl ? descriptionEl.textContent || '' : '';
         const importance = importanceEl ?
           (importanceEl.textContent === 'high' ? 'high' :
             importanceEl.textContent === 'medium' ? 'medium' : 'low') : 'medium';
@@ -1030,6 +1033,7 @@ QUALITY CHECKLIST before generating XML:
         pages.push({
           id,
           title,
+          description,
           content: '', // Will be generated later
           filePaths,
           importance,
