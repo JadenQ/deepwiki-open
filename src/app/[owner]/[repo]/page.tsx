@@ -1888,7 +1888,7 @@ QUALITY CHECKLIST before generating XML:
     };
 
     saveCache();
-  }, [isLoading, error, wikiStructure, generatedPages, effectiveRepoInfo.owner, effectiveRepoInfo.repo, effectiveRepoInfo.type, effectiveRepoInfo.repoUrl, repoUrl, language, isComprehensiveView]);
+  }, [isLoading, error, wikiStructure, generatedPages, effectiveRepoInfo, language, isComprehensiveView, selectedProviderState, selectedModelState, repoUrl]);
 
   const handlePageSelect = (pageId: string) => {
     if (currentPageId != pageId) {
